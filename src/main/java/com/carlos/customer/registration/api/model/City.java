@@ -1,13 +1,42 @@
 package com.carlos.customer.registration.api.model;
 
-import lombok.Data;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 
-@Data
+@Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class City {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "state_id")
     private State state;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
 }
