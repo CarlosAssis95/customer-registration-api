@@ -4,6 +4,7 @@ import com.carlos.customer.registration.api.dto.StateDto;
 import com.carlos.customer.registration.api.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,10 @@ public class StateController {
     @GetMapping
     public List<StateDto> findAll(){
         return stateService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public StateDto findById(@PathVariable Long id){
+        return stateService.findById(id);
     }
 }

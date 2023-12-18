@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StateService {
@@ -20,5 +21,10 @@ public class StateService {
     public List<StateDto> findAll(){
         List<State> states = stateRepository.findAll();
         return stateMapper.fromListStateToListStateDto(states);
+    }
+
+    public StateDto findById(Long id){
+        State state = stateRepository.findById(id).get();
+        return stateMapper.fromStateToStateDto(state);
     }
 }
